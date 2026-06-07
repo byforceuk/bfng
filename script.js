@@ -87,7 +87,7 @@ if (form) {
       area: fields.area.trim(),
       interest: fields.interest,
       message: fields.message ? fields.message.trim() : '',
-      source: 'tradeflow_static_site',
+      source: 'bfng_static_site',
       submitted_at: new Date().toISOString()
     };
 
@@ -104,7 +104,7 @@ if (form) {
         });
         if (!response.ok) throw new Error(`Request failed: ${response.status}`);
       } else {
-        console.log('TradeFlow enquiry payload:', payload);
+        console.log('BFNG enquiry payload:', payload);
       }
 
       if (success) {

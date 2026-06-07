@@ -373,6 +373,11 @@ li::before {
   margin: 16px 0 8px;
 }
 .price span { font-size: 1rem; letter-spacing: 0; color: var(--muted); }
+.sub-price {
+  color: var(--dark) !important;
+  font-weight: 900;
+  margin: -2px 0 16px;
+}
 .price-card .button { margin-top: auto; }
 
 .cta-band {
