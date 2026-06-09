@@ -28,10 +28,23 @@ window.addEventListener('scroll', () => {
 
 function setError(field, message) {
   if (!field) return;
-  const wrapper = field.closest('label');
+  const wrapper = field.closest('label') || field.closest('.consent-row');
   const error = wrapper ? wrapper.querySelector('.error') : null;
   if (error) error.textContent = message || '';
   field.setAttribute('aria-invalid', message ? 'true' : 'false');
+  if (wrapper) wrapper.classList.toggle('field-invalid', Boolean(message));
+}
+
+function getFieldLabel(field) {
+  const wrapper = field ? field.closest('label') : null;
+  if (!wrapper) return 'This field';
+  const ownText = Array.from(wrapper.childNodes)
+    .filter((node) => node.nodeType === Node.TEXT_NODE)
+    .map((node) => node.textContent.trim())
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+  return ownText || field.getAttribute('name')?.replace(/_/g, ' ') || 'This field';
 }
 
 function validateEmail(value) {
@@ -277,37 +290,81 @@ if (onboardingForm) {
   const clearStepErrors = (step) => {
     step.querySelectorAll('.error').forEach((node) => { node.textContent = ''; });
     step.querySelectorAll('[aria-invalid]').forEach((node) => node.removeAttribute('aria-invalid'));
+    step.querySelectorAll('.field-invalid').forEach((node) => node.classList.remove('field-invalid'));
+    const summary = step.querySelector('[data-step-error-summary]');
+    if (summary) {
+      summary.hidden = true;
+      summary.textContent = '';
+    }
+  };
+
+  const stepErrorSummary = (step) => {
+    let summary = step.querySelector('[data-step-error-summary]');
+    if (!summary) {
+      summary = document.createElement('div');
+      summary.className = 'step-error-summary';
+      summary.setAttribute('data-step-error-summary', '');
+      summary.setAttribute('role', 'alert');
+      summary.hidden = true;
+      const intro = step.querySelector('p');
+      if (intro && intro.nextSibling) {
+        intro.parentNode.insertBefore(summary, intro.nextSibling);
+      } else {
+        step.insertBefore(summary, step.firstChild);
+      }
+    }
+    return summary;
   };
 
   const validateCurrentStep = () => {
     const step = steps[currentStep];
     clearStepErrors(step);
-    let valid = true;
+    const invalidFields = [];
 
     requiredFieldsForStep(step).forEach((field) => {
+      const label = getFieldLabel(field);
       const value = field.type === 'checkbox' ? field.checked : String(field.value || '').trim();
+      let message = '';
+
       if (!value) {
+        message = field.type === 'checkbox'
+          ? 'Please confirm this before continuing'
+          : `${label} is required`;
+      } else if (field.type === 'email' && !validateEmail(String(field.value || '').trim())) {
+        message = `${label} must be a valid email address`;
+      } else if (field.type === 'tel' && !validatePhone(String(field.value || '').trim())) {
+        message = `${label} must be a valid UK phone number`;
+      }
+
+      if (message) {
         if (field.type === 'checkbox') {
           const consentError = step.querySelector('.consent-error');
-          if (consentError) consentError.textContent = 'Required';
+          if (consentError) consentError.textContent = message;
+          const wrapper = field.closest('.consent-row');
+          if (wrapper) wrapper.classList.add('field-invalid');
+          field.setAttribute('aria-invalid', 'true');
+          invalidFields.push('setup consent');
         } else {
-          setError(field, 'Required');
+          setError(field, message);
+          invalidFields.push(label);
         }
-        valid = false;
-      }
-
-      if (valid && field.type === 'email' && field.value && !validateEmail(field.value)) {
-        setError(field, 'Enter a valid email address');
-        valid = false;
-      }
-
-      if (valid && field.type === 'tel' && field.value && !validatePhone(field.value)) {
-        setError(field, 'Enter a valid UK phone number');
-        valid = false;
       }
     });
 
-    return valid;
+    if (invalidFields.length) {
+      const summary = stepErrorSummary(step);
+      const uniqueFields = Array.from(new Set(invalidFields));
+      summary.textContent = `Complete before continuing: ${uniqueFields.join(', ')}.`;
+      summary.hidden = false;
+      const firstInvalid = step.querySelector('[aria-invalid="true"]');
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.setTimeout(() => firstInvalid.focus({ preventScroll: true }), 220);
+      }
+      return false;
+    }
+
+    return true;
   };
 
   const renderStep = () => {
@@ -348,6 +405,31 @@ if (onboardingForm) {
       return lines.length ? `${title}\n${lines.join('\n')}` : '';
     }).filter(Boolean).join('\n\n');
   };
+
+  onboardingForm.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.addEventListener('input', () => {
+      if (field.getAttribute('aria-invalid') === 'true') {
+        setError(field, '');
+        const step = steps[currentStep];
+        const summary = step ? step.querySelector('[data-step-error-summary]') : null;
+        if (summary) {
+          summary.hidden = true;
+          summary.textContent = '';
+        }
+      }
+    });
+    field.addEventListener('change', () => {
+      if (field.getAttribute('aria-invalid') === 'true') {
+        setError(field, '');
+        const step = steps[currentStep];
+        const summary = step ? step.querySelector('[data-step-error-summary]') : null;
+        if (summary) {
+          summary.hidden = true;
+          summary.textContent = '';
+        }
+      }
+    });
+  });
 
   if (nextButton) {
     nextButton.addEventListener('click', () => {

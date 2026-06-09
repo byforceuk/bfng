@@ -548,13 +548,19 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(255,122,26,0.12);
 }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-color: #b00020;
+  background: #fff7f7;
+  box-shadow: 0 0 0 4px rgba(176, 0, 32, 0.1);
+}
 textarea { resize: vertical; }
 .error {
   min-height: 16px;
   color: #b00020;
-  font-weight: 700;
-  font-size: 0.78rem;
+  font-weight: 800;
+  font-size: 0.82rem;
 }
+.field-invalid { color: #8a0018; }
 .consent-row {
   display: flex;
   align-items: flex-start;
@@ -836,6 +842,16 @@ details p {
 }
 .wizard-step h3 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-bottom: 8px; }
 .wizard-step > p { color: var(--muted); margin-bottom: 24px; }
+.step-error-summary {
+  margin: -4px 0 22px;
+  padding: 14px 16px;
+  border: 1px solid rgba(176, 0, 32, 0.24);
+  border-left: 5px solid #b00020;
+  border-radius: var(--radius-sm);
+  background: #fff7f7;
+  color: #8a0018;
+  font-weight: 900;
+}
 .wizard-actions {
   display: flex;
   justify-content: space-between;
