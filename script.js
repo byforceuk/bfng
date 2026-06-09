@@ -175,18 +175,20 @@ if (form) {
       email: fields.email ? fields.email.trim() : '',
       area: fields.area.trim(),
       service_interest: fields.interest,
+      current_setup: fields.current_setup ? fields.current_setup.trim() : '',
       message: fields.message ? fields.message.trim() : '',
       source_page: window.location.href,
       consent: Boolean(form.elements.consent.checked)
     };
 
-    const fallbackUrl = buildMailtoFallback('BFNG missed-call recovery install enquiry', {
+    const fallbackUrl = buildMailtoFallback('BFNG trade enquiry recovery audit request', {
       Name: payload.name,
       Trade: payload.trade,
       Phone: payload.phone,
       Email: payload.email,
       Area: payload.area,
       'Main issue': payload.service_interest,
+      'Current setup': payload.current_setup,
       Message: payload.message
     });
 
@@ -196,7 +198,7 @@ if (form) {
     try {
       await postEnquiry(payload);
       form.reset();
-      showSuccess(form, 'Enquiry received. BFNG will contact you shortly.');
+      showSuccess(form, 'Audit request received. BFNG will contact you shortly.');
     } catch (error) {
       showFormError(form, 'The form could not submit automatically.', fallbackUrl);
     } finally {
