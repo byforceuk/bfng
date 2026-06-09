@@ -39,7 +39,7 @@ function validatePhone(value) {
 }
 
 function openPreparedEmail(subject, fields) {
-  const recipient = 'enquiries@bfng.co.uk';
+  const recipient = 'email@bfng.co.uk';
   const lines = Object.entries(fields)
     .filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '')
     .map(([key, value]) => `${key}: ${value}`);
