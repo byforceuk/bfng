@@ -87,7 +87,7 @@ if (form) {
       area: fields.area.trim(),
       interest: fields.interest,
       message: fields.message ? fields.message.trim() : '',
-      source: 'bfng_static_site',
+      source: 'bfng_missed_job_recovery_site',
       submitted_at: new Date().toISOString()
     };
 
@@ -109,13 +109,13 @@ if (form) {
 
       if (success) {
         success.hidden = false;
-        success.textContent = 'Enquiry ready. In this static version it is logged in the browser console until you connect a backend endpoint.';
+        success.textContent = 'Recovery enquiry ready. In this static version it is logged in the browser console until you connect a backend endpoint.';
       }
       form.reset();
     } catch (error) {
       if (success) {
         success.hidden = false;
-        success.textContent = 'Could not send the enquiry. Check the endpoint in script.js.';
+        success.textContent = 'Could not send the recovery enquiry. Check the endpoint in script.js.';
       }
       console.error(error);
     } finally {
