@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#101512" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Request a missed job audit for a UK trade business. Estimate missed-call exposure before installing BFNG." />
+  <title>Free Missed Job Audit for UK Trades | BFNG</title>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html#top" aria-label="BFNG home"><span class="brand-mark">BF</span><span>BFNG</span></a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+    <nav class="site-nav" data-nav>
+      <a href="index.html#demo">Demo</a>
+      <a href="index.html#audit">Audit</a>
+      <a href="index.html#proof">Proof</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#enquiry" class="nav-cta">Book install</a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="section-pad">
+      <div class="container enquiry-grid">
+        <div class="enquiry-copy">
+          <div class="eyebrow">Audit route placeholder</div>
+          <h1>Free missed-job audit.</h1>
+          <p class="hero-lede">The audit is free; the service install is not. This gives prospects value without giving away the actual setup. Backend route to connect later: <span class="backend-route">/api/missed-job-audit</span>.</p>
+          <div class="mini-checklist"><span>✓ Estimate missed-call exposure</span><span>✓ Confirm call volume</span><span>✓ Identify best setup tier</span><span>✓ No free trial required</span></div>
+        </div>
+        <form class="enquiry-form" id="auditForm" novalidate>
+          <div class="form-row two"><label>Name<input name="name" required placeholder="Your name"></label><label>Trade<input name="trade" required placeholder="Plumber, electrician, roofer..."></label></div>
+          <div class="form-row two"><label>Phone<input name="phone" required placeholder="07..."></label><label>Area<input name="area" required placeholder="Postcode / town"></label></div>
+          <div class="form-row two"><label>Missed calls per week<input type="number" name="missed_calls" min="0" placeholder="e.g. 8"></label><label>Average job value<input type="number" name="avg_job" min="0" placeholder="e.g. 180"></label></div>
+          <label>Current process<textarea name="process" rows="5" placeholder="What happens now when you miss a customer call?"></textarea></label>
+          <button class="button primary full" type="submit">Prepare audit request</button>
+          <p class="form-note">Static version: form action awaiting backend. Submission will be handled when route is connected.</p>
+          <div class="form-success" role="status" aria-live="polite" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="index.html#top"><span class="brand-mark">BF</span><span>BFNG</span></a><p>Missed job recovery systems for UK tradespeople. Text-back first. AI later.</p></div>
+      <div class="footer-links"><a href="index.html#demo">Demo</a><a href="index.html#audit">Audit</a><a href="index.html#pricing">Pricing</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="gdpr.html">GDPR</a></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

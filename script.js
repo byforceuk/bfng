@@ -123,3 +123,39 @@ if (form) {
     }
   });
 }
+
+const roiCalculator = document.getElementById('roiCalculator');
+if (roiCalculator) {
+  const formatGBP = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+  const output = document.getElementById('roiMonthly');
+  const detail = document.getElementById('roiDetail');
+  const calculate = () => {
+    const data = new FormData(roiCalculator);
+    const missedCalls = Math.max(0, Number(data.get('missedCalls') || 0));
+    const jobValue = Math.max(0, Number(data.get('jobValue') || 0));
+    const closeRate = Math.min(100, Math.max(0, Number(data.get('closeRate') || 0))) / 100;
+    const recoverRate = Math.min(100, Math.max(0, Number(data.get('recoverRate') || 0))) / 100;
+    const monthlyExposure = missedCalls * 4.33 * jobValue * closeRate * recoverRate;
+    if (output) output.textContent = `${formatGBP.format(monthlyExposure)}/mo`;
+    if (detail) detail.textContent = `${missedCalls} missed calls/week × ${formatGBP.format(jobValue)} average job × ${Math.round(closeRate * 100)}% close rate × ${Math.round(recoverRate * 100)}% recoverable share.`;
+  };
+  roiCalculator.addEventListener('input', calculate);
+  calculate();
+}
+
+
+const auditForm = document.getElementById('auditForm');
+if (auditForm) {
+  auditForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const payload = Object.fromEntries(new FormData(auditForm).entries());
+    payload.source = 'bfng_missed_job_audit_static';
+    payload.submitted_at = new Date().toISOString();
+    console.log('BFNG audit payload awaiting backend:', payload);
+    const success = auditForm.querySelector('.form-success');
+    if (success) {
+      success.hidden = false;
+      success.textContent = 'Audit request prepared. Static version: connect this to /api/missed-job-audit next.';
+    }
+  });
+}

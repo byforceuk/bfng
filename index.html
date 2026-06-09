@@ -93,11 +93,11 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" data-nav>
-      <a href="#how">How it works</a>
-      <a href="#trades">Trades</a>
-      <a href="#seo-content">Guides</a>
+      <a href="#demo">Demo</a>
+      <a href="#audit">Audit</a>
+      <a href="#proof">Proof</a>
       <a href="#pricing">Pricing</a>
-      <a href="#enquiry" class="nav-cta">Recover missed jobs</a>
+      <a href="#enquiry" class="nav-cta">Book install</a>
     </nav>
   </header>
 
@@ -110,8 +110,9 @@
           <h1>Stop missed calls turning into missed jobs.</h1>
           <p class="hero-lede">BFNG installs a done-for-you missed call text back system for plumbers, electricians, roofers, locksmiths, drainage firms, builders and other UK trades. When you cannot answer the phone, your caller gets an instant SMS, the job details are captured, and you are reminded to call back before they ring the next trade on Google.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#enquiry">Book a missed-call recovery check</a>
-            <a class="button secondary" href="#pricing">View upfront + monthly pricing</a>
+            <a class="button primary" href="#demo">Try the missed-call demo</a>
+            <a class="button secondary" href="#audit">Get a free missed-job audit</a>
+            <a class="button tertiary" href="#pricing">View setup + monthly pricing</a>
           </div>
           <div class="proof-row" aria-label="Service highlights">
             <span>Instant SMS text-back</span>
@@ -119,6 +120,7 @@
             <span>Callback reminders</span>
             <span>Monthly missed job report</span>
             <span>Installed for you</span>
+            <span>No free trial — paid install, real setup</span>
           </div>
         </div>
 
@@ -147,6 +149,75 @@
         <div><strong>The search:</strong> “missed call text back UK”</div>
         <div><strong>The buyer:</strong> trades who cannot answer while working</div>
         <div><strong>The fix:</strong> upfront setup + managed monthly recovery</div>
+      </div>
+    </section>
+    <section id="demo" class="section-pad demo-section">
+      <div class="container demo-grid">
+        <div>
+          <div class="eyebrow">Action mechanic 01</div>
+          <h2>Do not take the page on trust. Test the missed-call flow.</h2>
+          <p class="large-copy">The live phone demo will be connected after the backend/telephony build. For now, this section gives BFNG a clear conversion asset and leaves the route ready to plug in.</p>
+          <div class="demo-number-card">
+            <span>Demo number awaiting backend</span>
+            <strong data-demo-number>020 0000 0000</strong>
+            <p>Call, let it ring out, receive the SMS, open the job-capture form, and see what a trade customer would experience.</p>
+          </div>
+          <div class="hero-actions compact-actions">
+            <a class="button primary" href="demo.html">Open demo page</a>
+            <a class="button secondary" href="#enquiry">Tell me when demo is live</a>
+          </div>
+        </div>
+        <div class="flow-preview" aria-label="BFNG demo flow preview">
+          <div class="flow-step"><span>1</span><strong>Caller rings</strong><p>They call your trade number while you are on-site.</p></div>
+          <div class="flow-step"><span>2</span><strong>Missed call detected</strong><p>The system triggers the text-back route.</p></div>
+          <div class="flow-step"><span>3</span><strong>SMS sent</strong><p>The customer gets a useful next step, not silence.</p></div>
+          <div class="flow-step"><span>4</span><strong>Job captured</strong><p>You receive the postcode, urgency, job details and callback status.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audit" class="section-pad calculator-section light-section">
+      <div class="container calculator-grid">
+        <div>
+          <div class="eyebrow">Action mechanic 02</div>
+          <h2>Run a missed-job audit before asking for a sale.</h2>
+          <p class="large-copy">This audit makes the problem financial. It avoids a free trial while still giving the prospect a reason to engage. The calculator is static today and can later post to <code>/api/missed-job-audit</code>.</p>
+          <ul class="check-list">
+            <li>Shows potential missed-job exposure without overclaiming</li>
+            <li>Qualifies whether the trade has enough call volume</li>
+            <li>Creates a natural sales conversation around setup</li>
+            <li>Keeps immediate cashflow intact: paid install, no free trial</li>
+          </ul>
+        </div>
+        <form class="roi-card" id="roiCalculator" novalidate>
+          <h3>Missed Job Exposure Calculator</h3>
+          <label>Missed calls per week<input type="number" name="missedCalls" min="0" step="1" value="8" /></label>
+          <label>Average job value (£)<input type="number" name="jobValue" min="0" step="10" value="180" /></label>
+          <label>Estimated close rate (%)<input type="number" name="closeRate" min="1" max="100" step="1" value="30" /></label>
+          <label>Recoverable share (%)<input type="number" name="recoverRate" min="1" max="100" step="1" value="40" /></label>
+          <div class="roi-result" aria-live="polite">
+            <span>Estimated recoverable exposure</span>
+            <strong id="roiMonthly">£0/mo</strong>
+            <small id="roiDetail">Adjust the inputs to estimate monthly opportunity.</small>
+          </div>
+          <a class="button primary full" href="missed-job-audit.html">Request manual audit</a>
+        </form>
+      </div>
+    </section>
+
+    <section id="proof" class="section-pad proof-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Trust before testimonials</div>
+          <h2>No reviews yet? Show the working parts instead.</h2>
+          <p>BFNG should not pretend to be older than it is. The trust strategy is operational transparency: show the demo flow, show the SMS, show the setup checklist, show the report, show the data handling, and guarantee the install work.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card"><h3>Live demo route</h3><p>Backend placeholder ready. Once connected, prospects can call a demo number and experience the missed-call text-back flow.</p><a href="demo.html">View demo page</a></article>
+          <article class="proof-card"><h3>Example SMS library</h3><p>Trade-specific templates for plumbers, electricians, roofers, locksmiths, drainage, builders and landscapers.</p><a href="#sms-library">See templates</a></article>
+          <article class="proof-card"><h3>Setup checklist</h3><p>The upfront fee is justified by visible installation work: routing, messages, forms, tests, reminders and handover.</p><a href="#setup-checklist">See setup</a></article>
+          <article class="proof-card"><h3>Privacy and data handling</h3><p>Clear privacy, GDPR and terms pages are included so BFNG does not look like a faceless lead form.</p><a href="privacy.html">Privacy page</a></article>
+        </div>
       </div>
     </section>
 
@@ -196,6 +267,48 @@
           <article class="service-card"><div class="service-icon">04</div><h3>Simple lead board</h3><p>Every missed call can be reviewed as a lead instead of disappearing inside your phone log.</p><ul><li>New, contacted, booked and lost statuses</li><li>Basic tracking for missed enquiries</li><li>No heavy CRM setup required</li></ul></article>
           <article class="service-card"><div class="service-icon">05</div><h3>Monthly Missed Job Report</h3><p>BFNG shows the recovered enquiries, replies, callbacks and estimated value so the system can prove its worth.</p><ul><li>Missed calls captured</li><li>Replies and forms completed</li><li>Recovered-job value estimate</li></ul></article>
           <article class="service-card future-card"><div class="service-icon">06</div><h3>AI later, not first</h3><p>Once missed-call recovery is working, BFNG can grow into AI qualification, AI receptionist cover and quote follow-up automation.</p><ul><li>AI receptionist as upgrade path</li><li>SMS qualification before voice AI</li><li>No overbuilt tech on day one</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sms-library" class="section-pad sms-section light-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Trust asset</div>
+          <h2>Show the exact style of SMS customers receive.</h2>
+          <p>Basic competitors say “we text them back.” BFNG shows the practical trade-specific message customers actually receive.</p>
+        </div>
+        <div class="sms-grid">
+          <article class="sms-card"><span>Plumber</span><p>Sorry we missed your call. If this is urgent, reply URGENT. Otherwise send your postcode and a quick description of the plumbing issue and we’ll get back to you.</p></article>
+          <article class="sms-card"><span>Electrician</span><p>Sorry we missed your call. If anything feels unsafe, reply URGENT. Otherwise send your postcode and what electrical work you need help with.</p></article>
+          <article class="sms-card"><span>Roofer</span><p>Sorry we missed you. For roof leaks, repairs or gutter work, send your postcode and a photo if possible. We’ll review and call you back.</p></article>
+          <article class="sms-card"><span>Locksmith</span><p>Sorry we missed your call. Reply with your postcode, whether you are locked out or need a lock change, and how urgent it is.</p></article>
+          <article class="sms-card"><span>Drainage</span><p>Sorry we missed you. Send your postcode, what is blocked or overflowing, and whether there is external access. Photos/video help if available.</p></article>
+          <article class="sms-card"><span>Builder / landscaper</span><p>Sorry we missed your call. Send your postcode, project type, rough timing and any photos. We’ll call back with the right next step.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="setup-checklist" class="section-pad setup-section">
+      <div class="container setup-grid">
+        <div>
+          <div class="eyebrow">Why there is an upfront fee</div>
+          <h2>Cheap widgets leave setup to you. BFNG installs the recovery system.</h2>
+          <p class="large-copy">No free trial. The commercial promise is cleaner: pay for a proper setup, get the missed-call recovery flow installed, tested and handed over. If BFNG cannot install a working missed-call text-back flow around your setup, you do not pay the setup fee.</p>
+          <div class="guarantee-card"><strong>Install-work guarantee</strong><p>If we cannot install a working missed-call text-back flow for your business, the setup fee is not payable. This guarantees the work, not revenue results.</p></div>
+        </div>
+        <div class="setup-list-card">
+          <h3>Your setup includes</h3>
+          <ol class="numbered-list">
+            <li>Phone/routing check around your current setup</li>
+            <li>Trade-specific SMS template written for your calls</li>
+            <li>Job-capture form with postcode, urgency and job details</li>
+            <li>Callback reminder sequence configured</li>
+            <li>Simple lead board prepared</li>
+            <li>Test missed call and SMS flow</li>
+            <li>Handover walkthrough</li>
+            <li>48-hour post-install check</li>
+          </ol>
         </div>
       </div>
     </section>
@@ -260,7 +373,7 @@
             <a href="#enquiry" class="button outline">Discuss Plus</a>
           </article>
         </div>
-        <p class="pricing-note">Launch-positioning prices. Keep Job Recovery Pro as the core public offer. AI receptionist, calendar booking and voice-agent features should be sold later as add-ons or bespoke upgrades.</p>
+        <p class="pricing-note">No free trial is offered because BFNG is not selling a disposable widget. The upfront fee pays for configuration, testing and handover. Job Recovery Pro should remain the core public offer; AI receptionist, calendar booking and voice-agent features should stay as later add-ons or bespoke upgrades.</p>
       </div>
     </section>
 
@@ -334,7 +447,8 @@
           <h2>Common questions from tradespeople.</h2>
         </div>
         <div class="faq-list">
-          <details open><summary>Can BFNG work with my current trade number?</summary><p>The site now positions this as existing-number routing guidance rather than promising every setup is identical. The sales call should confirm whether the trade uses mobile, VoIP, landline forwarding or another call setup.</p></details>
+          <details open><summary>Can BFNG work with my current trade number?</summary><p>Usually the first step is a routing check. The setup call confirms whether you use a mobile, VoIP, landline forwarding or another phone setup, then BFNG chooses the cleanest missed-call text-back route.</p></details>
+          <details><summary>Is there a free trial?</summary><p>No. BFNG is positioned as a paid setup service because cashflow and operational commitment matter. Instead of a free trial, prospects can use the demo flow, missed-job audit, setup checklist and install-work guarantee before buying.</p></details>
           <details><summary>Does this replace voicemail?</summary><p>It does not need to remove voicemail. It makes the first response active instead of passive. The caller gets an immediate SMS and can reply with job details before they call someone else.</p></details>
           <details><summary>Why charge an upfront setup fee?</summary><p>The upfront fee covers installation, message writing, form creation, routing checks, lead board setup and test calls. The monthly fee covers support, reporting, reminders and small improvements.</p></details>
           <details><summary>Is this only for emergency trades?</summary><p>No. It is strongest for urgent trades, but it also works for builders, landscapers, cleaners, pest control, heating engineers and any service business where inbound calls become jobs.</p></details>
@@ -346,10 +460,10 @@
     <section class="section-pad cta-band">
       <div class="container cta-grid">
         <div>
-          <h2>Start with the leak closest to the money.</h2>
-          <p>People already calling you are warmer than cold leads. BFNG helps you catch them before they move on.</p>
+          <h2>Ready to install the missed-call recovery layer?</h2>
+          <p>Start with paid setup, test the flow, capture missed callers, and add AI only when the simple recovery layer is working.</p>
         </div>
-        <a href="#enquiry" class="button light">Recover missed jobs</a>
+        <a href="#enquiry" class="button light">Book paid installation</a>
       </div>
     </section>
 
@@ -357,8 +471,8 @@
       <div class="container enquiry-grid">
         <div class="enquiry-copy">
           <div class="eyebrow">Enquiry</div>
-          <h2>Get a missed-call recovery check.</h2>
-          <p>Send your trade, area and current call problem. BFNG will confirm the cleanest way to start with missed-call text-back around your existing setup.</p>
+          <h2>Book a paid missed-call recovery install.</h2>
+          <p>Use this as the main lead form until backend routes are connected. The first conversation should qualify trade, call volume, current phone setup, average job value and which paid setup is the correct starting point. Demo, audit and enquiry routes are intentionally static placeholders for the backend build.</p>
           <div class="mini-checklist"><span>✓ Upfront setup + monthly support</span><span>✓ Built for sole traders and small teams</span><span>✓ Starts with missed-call text-back</span><span>✓ AI kept as a later upgrade path</span><span>✓ Main offer: £297 setup + £97/mo</span></div>
         </div>
         <form class="enquiry-form" id="enquiryForm" novalidate>
@@ -378,7 +492,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div><a class="brand footer-brand" href="#top"><span class="brand-mark">BF</span><span>BFNG</span></a><p>Missed job recovery systems for UK tradespeople. Text-back first. AI later.</p></div>
-      <div class="footer-links"><a href="#how">How it works</a><a href="#trades">Trades</a><a href="#pricing">Pricing</a><a href="#enquiry">Enquiry</a></div>
+      <div class="footer-links"><a href="#demo">Demo</a><a href="#audit">Audit</a><a href="#pricing">Pricing</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="gdpr.html">GDPR</a></div>
     </div>
   </footer>
   <script src="script.js"></script>

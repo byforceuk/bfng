@@ -697,3 +697,88 @@ details p {
 @media (max-width: 980px) {
   .article-grid { grid-template-columns: 1fr; }
 }
+
+/* Conversion/action mechanics patch */
+.button.tertiary { background: #fff; border-color: var(--line); color: var(--ink); }
+.large-copy { color: var(--muted); font-size: 1.12rem; max-width: 760px; }
+.compact-actions { margin-top: 22px; }
+.demo-section { background: #fffaf4; }
+.demo-grid, .calculator-grid, .setup-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 42px;
+  align-items: center;
+}
+.demo-number-card, .roi-card, .setup-list-card, .guarantee-card, .proof-card, .sms-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.04);
+}
+.demo-number-card { margin-top: 22px; }
+.demo-number-card span { color: var(--accent-dark); font-weight: 900; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.08em; }
+.demo-number-card strong { display: block; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.07em; line-height: 1; margin: 10px 0; }
+.demo-number-card p { color: var(--muted); margin-bottom: 0; }
+.flow-preview { display: grid; gap: 14px; }
+.flow-step {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  column-gap: 16px;
+  background: var(--dark);
+  color: #fff;
+  padding: 20px;
+  border-radius: 22px;
+}
+.flow-step span { grid-row: span 2; display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 16px; background: var(--accent); color: #111; font-weight: 900; }
+.flow-step strong { font-size: 1.15rem; }
+.flow-step p { color: rgba(255,255,255,0.7); margin: 4px 0 0; }
+.check-list li { padding-left: 28px; }
+.check-list li::before { width: 16px; height: 16px; top: 0.28em; background: var(--success); }
+.roi-card { display: grid; gap: 14px; }
+.roi-card h3 { margin-bottom: 4px; }
+.roi-result {
+  background: var(--dark);
+  color: #fff;
+  border-radius: 20px;
+  padding: 22px;
+  display: grid;
+  gap: 6px;
+  margin: 4px 0 8px;
+}
+.roi-result span { color: rgba(255,255,255,0.66); font-weight: 800; }
+.roi-result strong { color: var(--accent); font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: -0.07em; line-height: 1; }
+.roi-result small { color: rgba(255,255,255,0.66); font-weight: 750; }
+.proof-grid, .sms-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.proof-card p, .sms-card p { color: var(--muted); }
+.proof-card a { color: var(--accent-dark); font-weight: 900; }
+.sms-grid { grid-template-columns: repeat(3, 1fr); }
+.sms-card { background: #fff; }
+.sms-card span { display: inline-flex; color: var(--accent-dark); font-weight: 900; margin-bottom: 10px; }
+.setup-grid { align-items: start; }
+.guarantee-card { margin-top: 22px; background: var(--dark); color: #fff; }
+.guarantee-card p { color: rgba(255,255,255,0.72); margin: 8px 0 0; }
+.numbered-list { counter-reset: setup; list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
+.numbered-list li { counter-increment: setup; padding-left: 48px; min-height: 36px; display: flex; align-items: center; }
+.numbered-list li::before { content: counter(setup); top: 0; width: 34px; height: 34px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,122,26,0.14); color: var(--accent-dark); font-weight: 900; }
+.static-banner {
+  background: rgba(255,122,26,0.12);
+  border: 1px solid rgba(255,122,26,0.24);
+  border-radius: 18px;
+  padding: 16px 18px;
+  color: var(--accent-dark);
+  font-weight: 850;
+  margin: 22px 0;
+}
+.policy-content { max-width: 920px; }
+.policy-content h2 { font-size: clamp(1.7rem, 3vw, 2.7rem); margin-top: 36px; }
+.policy-content p, .policy-content li { color: var(--muted); }
+.backend-route { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #f0ede7; border: 1px solid var(--line); border-radius: 10px; padding: 2px 7px; }
+@media (max-width: 980px) {
+  .demo-grid, .calculator-grid, .setup-grid { grid-template-columns: 1fr; }
+  .proof-grid, .sms-grid { grid-template-columns: 1fr; }
+}
