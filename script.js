@@ -21,10 +21,6 @@ window.addEventListener('scroll', () => {
   header.style.boxShadow = window.scrollY > 8 ? '0 10px 30px rgba(0,0,0,0.06)' : 'none';
 });
 
-const form = document.getElementById('enquiryForm');
-
-const endpoint = ''; // Example later: '/api/trade-enquiry' or 'https://rxid.co.uk/api/trade-enquiry'
-
 function setError(field, message) {
   const wrapper = field.closest('label');
   const error = wrapper ? wrapper.querySelector('.error') : null;
@@ -42,8 +38,18 @@ function validatePhone(value) {
   return /^(\+44|0)\d{9,10}$/.test(cleaned);
 }
 
+function openPreparedEmail(subject, fields) {
+  const recipient = 'enquiries@bfng.co.uk';
+  const lines = Object.entries(fields)
+    .filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '')
+    .map(([key, value]) => `${key}: ${value}`);
+  const body = encodeURIComponent(lines.join('\n'));
+  window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
+
+const form = document.getElementById('enquiryForm');
 if (form) {
-  form.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const data = new FormData(form);
@@ -79,47 +85,20 @@ if (form) {
 
     if (!valid) return;
 
-    const payload = {
-      name: fields.name.trim(),
-      trade: fields.trade,
-      phone: fields.phone.trim(),
-      email: fields.email ? fields.email.trim() : '',
-      area: fields.area.trim(),
-      interest: fields.interest,
-      message: fields.message ? fields.message.trim() : '',
-      source: 'bfng_missed_job_recovery_site',
-      submitted_at: new Date().toISOString()
-    };
+    openPreparedEmail('BFNG missed-call recovery install enquiry', {
+      Name: fields.name.trim(),
+      Trade: fields.trade,
+      Phone: fields.phone.trim(),
+      Email: fields.email ? fields.email.trim() : '',
+      Area: fields.area.trim(),
+      'Main issue': fields.interest,
+      Message: fields.message ? fields.message.trim() : ''
+    });
 
     const success = form.querySelector('.form-success');
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (submitButton) submitButton.disabled = true;
-
-    try {
-      if (endpoint) {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-      } else {
-        console.log('BFNG enquiry payload:', payload);
-      }
-
-      if (success) {
-        success.hidden = false;
-        success.textContent = 'Recovery enquiry ready. In this static version it is logged in the browser console until you connect a backend endpoint.';
-      }
-      form.reset();
-    } catch (error) {
-      if (success) {
-        success.hidden = false;
-        success.textContent = 'Could not send the recovery enquiry. Check the endpoint in script.js.';
-      }
-      console.error(error);
-    } finally {
-      if (submitButton) submitButton.disabled = false;
+    if (success) {
+      success.hidden = false;
+      success.textContent = 'Your email app should now open with the enquiry prepared. Send the email to complete your request.';
     }
   });
 }
@@ -143,19 +122,24 @@ if (roiCalculator) {
   calculate();
 }
 
-
 const auditForm = document.getElementById('auditForm');
 if (auditForm) {
   auditForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const payload = Object.fromEntries(new FormData(auditForm).entries());
-    payload.source = 'bfng_missed_job_audit_static';
-    payload.submitted_at = new Date().toISOString();
-    console.log('BFNG audit payload awaiting backend:', payload);
+    const fields = Object.fromEntries(new FormData(auditForm).entries());
+    openPreparedEmail('BFNG missed-job audit request', {
+      Name: fields.name,
+      Trade: fields.trade,
+      Phone: fields.phone,
+      Area: fields.area,
+      'Missed calls per week': fields.missed_calls,
+      'Average job value': fields.avg_job,
+      'Current process': fields.process
+    });
     const success = auditForm.querySelector('.form-success');
     if (success) {
       success.hidden = false;
-      success.textContent = 'Audit request prepared. Static version: connect this to /api/missed-job-audit next.';
+      success.textContent = 'Your email app should now open with the audit request prepared. Send the email to complete your request.';
     }
   });
 }

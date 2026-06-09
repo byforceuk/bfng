@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bfng.co.uk/</loc><priority>1.0</priority></url>
-  <url><loc>https://bfng.co.uk/plumbers.html</loc><priority>0.8</priority></url>
-  <url><loc>https://bfng.co.uk/electricians.html</loc><priority>0.8</priority></url>
-  <url><loc>https://bfng.co.uk/roofers.html</loc><priority>0.8</priority></url>
-  <url><loc>https://bfng.co.uk/locksmiths.html</loc><priority>0.8</priority></url>
-  <url><loc>https://bfng.co.uk/drainage.html</loc><priority>0.8</priority></url>
-  <url><loc>https://bfng.co.uk/builders.html</loc><priority>0.8</priority></url>
-  <url><loc>https://bfng.co.uk/demo.html</loc></url>
+  <url><loc>https://bfng.co.uk/</loc></url>
+  <url><loc>https://bfng.co.uk/plumbers.html</loc></url>
+  <url><loc>https://bfng.co.uk/electricians.html</loc></url>
+  <url><loc>https://bfng.co.uk/roofers.html</loc></url>
+  <url><loc>https://bfng.co.uk/locksmiths.html</loc></url>
+  <url><loc>https://bfng.co.uk/drainage.html</loc></url>
+  <url><loc>https://bfng.co.uk/builders.html</loc></url>
   <url><loc>https://bfng.co.uk/missed-job-audit.html</loc></url>
+  <url><loc>https://bfng.co.uk/missed-call-text-back-vs-ai-receptionist.html</loc></url>
   <url><loc>https://bfng.co.uk/privacy.html</loc></url>
   <url><loc>https://bfng.co.uk/terms.html</loc></url>
   <url><loc>https://bfng.co.uk/gdpr.html</loc></url>
-  <url><loc>https://bfng.co.uk/missed-call-text-back-vs-ai-receptionist.html</loc></url>
 </urlset>
