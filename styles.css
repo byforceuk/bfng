@@ -776,3 +776,87 @@ details p {
  .calculator-grid, .setup-grid { grid-template-columns: 1fr; }
   .proof-grid, .sms-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Client onboarding wizard */
+.onboarding-hero {
+  background: radial-gradient(circle at top right, rgba(255,122,26,0.16), transparent 36%), #fffaf4;
+}
+.onboarding-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: center;
+}
+.onboarding-summary-card, .wizard-card, .notice-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.onboarding-summary-card { padding: 28px; }
+.numbered-list.compact { margin-top: 16px; }
+.slim-top { padding-top: 34px; }
+.wizard-shell { max-width: 980px; }
+.wizard-card { padding: clamp(22px, 4vw, 42px); }
+.wizard-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.wizard-head h2 { margin-bottom: 0; }
+.wizard-count {
+  min-width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--dark);
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+.wizard-progress {
+  width: 100%;
+  height: 10px;
+  background: #efe7dc;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.wizard-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width 220ms ease;
+}
+.wizard-step h3 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-bottom: 8px; }
+.wizard-step > p { color: var(--muted); margin-bottom: 24px; }
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.wizard-actions .button[hidden] { display: none; }
+.notice-card {
+  padding: 16px 18px;
+  color: var(--muted);
+  box-shadow: none;
+  background: #fffaf4;
+}
+.notice-card strong { color: var(--dark); }
+@media (max-width: 980px) {
+  .onboarding-hero-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .wizard-head { flex-direction: column; }
+  .wizard-count { width: 58px; height: 58px; min-width: 58px; }
+  .wizard-actions { flex-direction: column-reverse; }
+}

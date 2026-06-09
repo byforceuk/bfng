@@ -12,4 +12,9 @@
   <url><loc>https://bfng.co.uk/privacy.html</loc></url>
   <url><loc>https://bfng.co.uk/terms.html</loc></url>
   <url><loc>https://bfng.co.uk/gdpr.html</loc></url>
+  <url>
+    <loc>https://bfng.co.uk/onboarding</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

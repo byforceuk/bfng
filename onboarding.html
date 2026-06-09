@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="BFNG client onboarding form for setting up missed-call text-back, job capture forms, callback alerts and missed-job reporting." />
+  <meta name="theme-color" content="#101512" />
+  <link rel="canonical" href="https://bfng.co.uk/onboarding" />
+  <title>Client Onboarding | BFNG Missed Call Text Back Setup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="" aria-label="BFNG home"><span class="brand-mark">BF</span><span>BFNG</span></a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+    <nav class="site-nav" data-nav>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="#enquiry" class="nav-cta">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="onboarding-hero section-pad">
+      <div class="container onboarding-hero-grid">
+        <div>
+          <div class="eyebrow">Client setup</div>
+          <h1>BFNG onboarding.</h1>
+          <p class="hero-lede">Complete these steps so BFNG can build your missed-call text-back flow, job-capture form, callback alerts and reporting around your trade business.</p>
+          <div class="proof-row" aria-label="Onboarding highlights">
+            <span>5–8 minutes</span>
+            <span>Step-by-step</span>
+            <span>No telecom password needed</span>
+          </div>
+        </div>
+        <aside class="onboarding-summary-card" aria-label="What happens after submission">
+          <h2>After you submit</h2>
+          <ol class="numbered-list compact">
+            <li>BFNG prepares your SMS and job form.</li>
+            <li>We confirm your call-forwarding setup route.</li>
+            <li>You receive setup instructions and a test window.</li>
+            <li>The system is tested before it goes live.</li>
+          </ol>
+          <p class="form-note">Only provide information you are comfortable sharing for service setup. Do not send telecom account passwords.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-pad slim-top">
+      <div class="container wizard-shell">
+        <form id="onboardingForm" class="wizard-card" novalidate>
+          <div class="wizard-head">
+            <div>
+              <div class="eyebrow">Paid client setup form</div>
+              <h2>Set up your missed-call recovery flow</h2>
+            </div>
+            <div class="wizard-count"><span data-current-step>1</span>/<span data-total-steps>7</span></div>
+          </div>
+
+          <div class="wizard-progress" aria-hidden="true"><span data-progress-bar></span></div>
+
+          <div class="wizard-steps" aria-live="polite">
+            <section class="wizard-step is-active" data-step="1">
+              <h3>Business details</h3>
+              <p>Who is the system being built for?</p>
+              <div class="form-row two">
+                <label>Business name<input type="text" name="business_name" required placeholder="e.g. Smith Plumbing" /><small class="error"></small></label>
+                <label>Contact name<input type="text" name="contact_name" required autocomplete="name" placeholder="Your name" /><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Contact email<input type="email" name="contact_email" required autocomplete="email" placeholder="you@business.co.uk" /><small class="error"></small></label>
+                <label>Contact mobile<input type="tel" name="contact_mobile" required autocomplete="tel" placeholder="07..." /><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Website, if any<input type="url" name="website" placeholder="https://..." /><small class="error"></small></label>
+                <label>Google Business Profile, if any<input type="url" name="google_profile" placeholder="Google profile link" /><small class="error"></small></label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="2" hidden>
+              <h3>Trade and service area</h3>
+              <p>This controls your customer form questions and SMS wording.</p>
+              <div class="form-row two">
+                <label>Main trade<select name="trade_category" required><option value="">Select trade</option><option>Plumbing</option><option>Roofing</option><option>Electrical</option><option>Drainage</option><option>Locksmith</option><option>Boiler / heating</option><option>Building</option><option>Landscaping</option><option>Pest control</option><option>Cleaning</option><option>Other trade</option></select><small class="error"></small></label>
+                <label>Emergency work?<select name="emergency_work" required><option value="">Select</option><option>Yes — emergency callouts accepted</option><option>No — planned work only</option><option>Sometimes / depends on job</option></select><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Service areas / postcodes<textarea name="service_areas" required rows="4" placeholder="e.g. NW London, Barnet, Finchley, Watford"></textarea><small class="error"></small></label>
+                <label>Working hours<textarea name="working_hours" required rows="4" placeholder="e.g. Mon–Fri 8am–6pm, Sat emergency only"></textarea><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Jobs you want<textarea name="wanted_jobs" rows="4" placeholder="e.g. leaks, boiler faults, tap repairs, bathroom jobs"></textarea><small class="error"></small></label>
+                <label>Jobs you do not want<textarea name="blocked_jobs" rows="4" placeholder="e.g. no commercial work, no roofing over 3 storeys"></textarea><small class="error"></small></label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="3" hidden>
+              <h3>Phone setup</h3>
+              <p>BFNG will normally walk you through call forwarding. Do not send phone-account passwords.</p>
+              <div class="form-row two">
+                <label>Main customer phone number<input type="tel" name="main_phone" required placeholder="Number customers currently call" /><small class="error"></small></label>
+                <label>Phone type<select name="phone_type" required><option value="">Select</option><option>Mobile</option><option>Landline</option><option>VoIP / internet phone</option><option>Call answering service</option><option>Not sure</option></select><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Network / phone provider<input type="text" name="phone_provider" placeholder="e.g. EE, O2, Vodafone, BT, Gamma, 8x8" /><small class="error"></small></label>
+                <label>Current missed-call behaviour<select name="current_missed_behaviour" required><option value="">Select</option><option>Goes to voicemail</option><option>Rings out</option><option>Forwards somewhere else</option><option>Not sure</option></select><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Preferred forwarding mode<select name="forwarding_mode" required><option value="">Select</option><option>Only when unanswered</option><option>When busy and unanswered</option><option>After-hours only</option><option>Need BFNG to advise</option></select><small class="error"></small></label>
+                <label>Best setup/test time<input type="text" name="setup_time" placeholder="e.g. tomorrow 6pm, weekday evenings" /><small class="error"></small></label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="4" hidden>
+              <h3>Lead alerts and callback process</h3>
+              <p>Tell BFNG where missed-call leads should go and who calls customers back.</p>
+              <div class="form-row two">
+                <label>Lead alert email<input type="email" name="lead_alert_email" required placeholder="Where job enquiries should be emailed" /><small class="error"></small></label>
+                <label>Lead alert mobile<input type="tel" name="lead_alert_mobile" required placeholder="Mobile for urgent alerts" /><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Who calls customers back?<input type="text" name="callback_owner" required placeholder="e.g. me, office manager, engineer on duty" /><small class="error"></small></label>
+                <label>Target callback time<select name="callback_target" required><option value="">Select</option><option>Within 5 minutes</option><option>Within 15 minutes</option><option>Within 1 hour</option><option>Same day</option><option>Depends on urgency</option></select><small class="error"></small></label>
+              </div>
+              <div class="form-row">
+                <label>Preferred alert method<select name="alert_method" required><option value="">Select</option><option>Email first</option><option>SMS first</option><option>Email and SMS</option><option>WhatsApp later if available</option></select><small class="error"></small></label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="5" hidden>
+              <h3>SMS and job form wording</h3>
+              <p>This controls what your missed callers see.</p>
+              <div class="form-row two">
+                <label>Business name to show in SMS<input type="text" name="sms_business_name" required placeholder="e.g. Smith Plumbing" /><small class="error"></small></label>
+                <label>Message tone<select name="message_tone" required><option value="">Select</option><option>Simple and direct</option><option>Friendly and reassuring</option><option>Emergency-focused</option><option>Professional / formal</option></select><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Callback promise<input type="text" name="callback_promise" placeholder="e.g. We'll call you back shortly" /><small class="error"></small></label>
+                <label>Should the form ask for full address?<select name="full_address" required><option value="">Select</option><option>No — postcode only first</option><option>Yes — full address is useful</option><option>Only for emergencies</option></select><small class="error"></small></label>
+              </div>
+              <div class="form-row">
+                <label>Extra questions you want customers asked<textarea name="extra_questions" rows="5" placeholder="e.g. boiler make/model, photos, parking/access notes, whether water/electric is off"></textarea><small class="error"></small></label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="6" hidden>
+              <h3>Branding and form link</h3>
+              <p>Standard setup uses a BFNG-hosted form. Client-domain setup can be added where needed.</p>
+              <div class="form-row two">
+                <label>Preferred form link<select name="form_link_preference" required><option value="">Select</option><option>BFNG-hosted form is fine</option><option>I want jobs.mybusiness.co.uk if possible</option><option>I want the form embedded on my website later</option><option>Not sure</option></select><small class="error"></small></label>
+                <label>Domain manager / website contact<input type="text" name="domain_contact" placeholder="Who controls your domain or website?" /><small class="error"></small></label>
+              </div>
+              <div class="form-row two">
+                <label>Logo link, if available<input type="url" name="logo_link" placeholder="Link to logo file or website logo" /><small class="error"></small></label>
+                <label>Brand colours, if any<input type="text" name="brand_colours" placeholder="e.g. navy and orange" /><small class="error"></small></label>
+              </div>
+              <div class="notice-card"><strong>Domain note:</strong> If you want a client-domain form later, BFNG usually only needs one DNS record added. Full website access is not normally required.</div>
+            </section>
+
+            <section class="wizard-step" data-step="7" hidden>
+              <h3>Final checks</h3>
+              <p>Confirm permission for BFNG to configure your missed-call recovery setup.</p>
+              <div class="form-row">
+                <label>Anything else BFNG should know?<textarea name="final_notes" rows="5" placeholder="Any constraints, call handling notes, existing systems or launch timing"></textarea><small class="error"></small></label>
+              </div>
+              <label class="consent-row"><input type="checkbox" name="setup_consent" required /> <span>I confirm BFNG may use these details to prepare my missed-call text-back, job-capture and callback setup. I have not provided telecom account passwords.</span></label>
+              <small class="error consent-error"></small>
+              <p class="form-note">Submitting this form sends your setup details to BFNG securely through the enquiry backend and saves a copy for setup handling.</p>
+            </section>
+          </div>
+
+          <div class="wizard-actions">
+            <button class="button secondary" type="button" data-wizard-back>Back</button>
+            <button class="button primary" type="button" data-wizard-next>Continue</button>
+            <button class="button primary" type="submit" data-wizard-submit hidden>Submit onboarding</button>
+          </div>
+          <div class="form-success" role="status" aria-live="polite" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="brand" href=""><span class="brand-mark">BF</span><span>BFNG</span></a><p>Missed-call recovery for UK tradespeople.</p></div>
+      <div class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="gdpr.html">GDPR</a><a href="#enquiry">Contact</a></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -257,3 +257,156 @@ if (auditForm) {
     }
   });
 }
+
+
+const onboardingForm = document.getElementById('onboardingForm');
+if (onboardingForm) {
+  const steps = Array.from(onboardingForm.querySelectorAll('.wizard-step'));
+  const nextButton = onboardingForm.querySelector('[data-wizard-next]');
+  const backButton = onboardingForm.querySelector('[data-wizard-back]');
+  const submitButton = onboardingForm.querySelector('[data-wizard-submit]');
+  const currentStepNode = onboardingForm.querySelector('[data-current-step]');
+  const totalStepsNode = onboardingForm.querySelector('[data-total-steps]');
+  const progressBar = onboardingForm.querySelector('[data-progress-bar]');
+  let currentStep = 0;
+
+  if (totalStepsNode) totalStepsNode.textContent = String(steps.length);
+
+  const requiredFieldsForStep = (step) => Array.from(step.querySelectorAll('[required]'));
+
+  const clearStepErrors = (step) => {
+    step.querySelectorAll('.error').forEach((node) => { node.textContent = ''; });
+    step.querySelectorAll('[aria-invalid]').forEach((node) => node.removeAttribute('aria-invalid'));
+  };
+
+  const validateCurrentStep = () => {
+    const step = steps[currentStep];
+    clearStepErrors(step);
+    let valid = true;
+
+    requiredFieldsForStep(step).forEach((field) => {
+      const value = field.type === 'checkbox' ? field.checked : String(field.value || '').trim();
+      if (!value) {
+        if (field.type === 'checkbox') {
+          const consentError = step.querySelector('.consent-error');
+          if (consentError) consentError.textContent = 'Required';
+        } else {
+          setError(field, 'Required');
+        }
+        valid = false;
+      }
+
+      if (valid && field.type === 'email' && field.value && !validateEmail(field.value)) {
+        setError(field, 'Enter a valid email address');
+        valid = false;
+      }
+
+      if (valid && field.type === 'tel' && field.value && !validatePhone(field.value)) {
+        setError(field, 'Enter a valid UK phone number');
+        valid = false;
+      }
+    });
+
+    return valid;
+  };
+
+  const renderStep = () => {
+    steps.forEach((step, index) => {
+      const active = index === currentStep;
+      step.hidden = !active;
+      step.classList.toggle('is-active', active);
+    });
+
+    if (currentStepNode) currentStepNode.textContent = String(currentStep + 1);
+    if (progressBar) progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+
+    if (backButton) backButton.hidden = currentStep === 0;
+    if (nextButton) nextButton.hidden = currentStep === steps.length - 1;
+    if (submitButton) submitButton.hidden = currentStep !== steps.length - 1;
+  };
+
+  const formDataObject = () => Object.fromEntries(new FormData(onboardingForm).entries());
+
+  const formatOnboardingMessage = (fields) => {
+    const sections = [
+      ['BUSINESS', ['business_name', 'contact_name', 'contact_email', 'contact_mobile', 'website', 'google_profile']],
+      ['TRADE AND AREA', ['trade_category', 'emergency_work', 'service_areas', 'working_hours', 'wanted_jobs', 'blocked_jobs']],
+      ['PHONE SETUP', ['main_phone', 'phone_type', 'phone_provider', 'current_missed_behaviour', 'forwarding_mode', 'setup_time']],
+      ['LEAD HANDLING', ['lead_alert_email', 'lead_alert_mobile', 'callback_owner', 'callback_target', 'alert_method']],
+      ['SMS AND FORM', ['sms_business_name', 'message_tone', 'callback_promise', 'full_address', 'extra_questions']],
+      ['BRANDING AND FORM LINK', ['form_link_preference', 'domain_contact', 'logo_link', 'brand_colours']],
+      ['FINAL NOTES', ['final_notes']]
+    ];
+
+    const label = (key) => key.replace(/_/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+    return sections.map(([title, keys]) => {
+      const lines = keys
+        .map((key) => [label(key), fields[key]])
+        .filter(([, value]) => value !== undefined && String(value).trim() !== '')
+        .map(([name, value]) => `${name}: ${String(value).trim()}`);
+      return lines.length ? `${title}\n${lines.join('\n')}` : '';
+    }).filter(Boolean).join('\n\n');
+  };
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      if (!validateCurrentStep()) return;
+      currentStep = Math.min(currentStep + 1, steps.length - 1);
+      renderStep();
+      onboardingForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      currentStep = Math.max(currentStep - 1, 0);
+      renderStep();
+      onboardingForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  onboardingForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!validateCurrentStep()) return;
+
+    const fields = formDataObject();
+    const payload = {
+      name: fields.contact_name ? fields.contact_name.trim() : '',
+      business_name: fields.business_name ? fields.business_name.trim() : '',
+      trade: fields.trade_category ? fields.trade_category.trim() : '',
+      phone: fields.contact_mobile ? fields.contact_mobile.trim() : '',
+      email: fields.contact_email ? fields.contact_email.trim() : '',
+      area: fields.service_areas ? fields.service_areas.trim() : '',
+      service_interest: 'Paid client onboarding setup details',
+      message: formatOnboardingMessage(fields),
+      source_page: window.location.href,
+      consent: Boolean(onboardingForm.elements.setup_consent && onboardingForm.elements.setup_consent.checked)
+    };
+
+    const fallbackUrl = buildMailtoFallback('BFNG client onboarding details', {
+      Business: payload.business_name,
+      Name: payload.name,
+      Trade: payload.trade,
+      Phone: payload.phone,
+      Email: payload.email,
+      Details: payload.message
+    });
+
+    setSubmitState(submitButton, true, 'Submitting...');
+
+    try {
+      await postEnquiry(payload);
+      onboardingForm.reset();
+      currentStep = 0;
+      renderStep();
+      showSuccess(onboardingForm, 'Onboarding received. BFNG will review your setup details and contact you with the next step.');
+    } catch (error) {
+      showFormError(onboardingForm, 'The onboarding form could not submit automatically.', fallbackUrl);
+    } finally {
+      setSubmitState(submitButton, false);
+    }
+  });
+
+  renderStep();
+}
