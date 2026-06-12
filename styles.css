@@ -1055,3 +1055,60 @@ details p {
   .compare-row span:nth-child(2), .compare-row strong, .compare-row.head span { border-left: 0; border-top: 1px solid var(--line); }
   .signal-grid { grid-template-columns: 1fr; }
 }
+
+/* BFNG red / dark conversion revamp */
+:root {
+  --bg: #0b090a;
+  --surface: #151112;
+  --ink: #f7f2f2;
+  --muted: #b9abad;
+  --line: rgba(255,255,255,.11);
+  --dark: #080607;
+  --dark-2: #110c0d;
+  --accent: #ef233c;
+  --accent-dark: #ff4d60;
+  --success: #ef233c;
+  --shadow: 0 28px 80px rgba(0,0,0,.42);
+}
+body { background: var(--bg); color: var(--ink); }
+.site-header { background: rgba(11,9,10,.88); border-bottom-color: rgba(255,255,255,.08); }
+.brand-mark { background: var(--accent); box-shadow: 0 0 28px rgba(239,35,60,.25); }
+.site-nav { color: #c5b8ba; }
+.site-nav a:hover { color: #fff; }
+.nav-cta { background: var(--accent); color: #fff !important; }
+.nav-toggle span { background: #fff; }
+.light-section { background: #100d0e; }
+.hero { background: #0b090a; }
+.hero-bg {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(239,35,60,.32), transparent 34%),
+    radial-gradient(circle at 14% 18%, rgba(145,8,25,.18), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,.018), transparent 62%);
+}
+.eyebrow { color: #ff6677; background: rgba(239,35,60,.11); border: 1px solid rgba(239,35,60,.22); }
+.hero-lede, .section-head p, .cta-band p, .enquiry-copy p, .copy-stack p, .large-copy { color: var(--muted); }
+.button.primary { background: var(--accent); color: #fff; box-shadow: 0 16px 38px rgba(239,35,60,.25); }
+.button.primary:hover { background: #ff334b; }
+.button.secondary, .button.tertiary, .button.outline { border-color: rgba(255,255,255,.17); color: #fff; background: rgba(255,255,255,.025); }
+.button.secondary:hover, .button.tertiary:hover, .button.outline:hover { border-color: rgba(239,35,60,.55); background: rgba(239,35,60,.08); }
+.proof-row span { background: rgba(255,255,255,.035); border-color: rgba(255,255,255,.09); color: #cbbfc1; }
+.hero-card, .titan-console { background: linear-gradient(155deg,#1b1113,#080607 72%); border: 1px solid rgba(239,35,60,.22); box-shadow: 0 34px 100px rgba(0,0,0,.5), 0 0 70px rgba(239,35,60,.10); }
+.message.outgoing { background: var(--accent); color: #fff; }
+.call-alert { background: rgba(239,35,60,.16); border-color: rgba(239,35,60,.32); color: #ffb4bd; }
+.strip, .titan-strip { background: var(--accent); color: #fff; }
+.system-tile, .service-card, .sms-card, .price-card, .audit-card, .setup-list-card, .guarantee-card, .report-card, .lead-card, .package-price-card, .compare-card, .trade-card, .faq-item, .enquiry-form {
+  background: #151112;
+  border-color: rgba(255,255,255,.09);
+  color: var(--ink);
+  box-shadow: 0 18px 55px rgba(0,0,0,.18);
+}
+.system-tile:hover, .service-card:hover, .price-card:hover { border-color: rgba(239,35,60,.40); }
+.system-tile > span, .service-icon, .badge { color: #ff6677; }
+.dark-section, .benchmark-section, .setup-section, .pricing-section, .compare-section { background: #0d0a0b; color: #fff; }
+.cta-band { background: var(--accent); color: #fff; }
+.button.light { background: #fff; color: #12090b; }
+input, textarea, select { background: #0d0a0b; color: #fff; border-color: rgba(255,255,255,.14); }
+input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(239,35,60,.12); }
+footer, .site-footer { background: #080607; border-top-color: rgba(255,255,255,.08); }
+::selection { background: var(--accent); color: #fff; }
+@media (max-width: 860px) { .site-nav { background: rgba(11,9,10,.98); border-color: rgba(255,255,255,.09); } }
