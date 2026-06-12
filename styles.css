@@ -1195,3 +1195,60 @@ footer, .site-footer { background: #080607; border-top-color: rgba(255,255,255,.
   .console-result { display: grid; }
   .section-pad { padding: 72px 0; }
 }
+
+/* BFNG STTM MONEY FLOW */
+.money-site { background:#090708; }
+.money-nav { display:flex; }
+.money-hero { min-height:calc(100vh - 78px); display:grid; place-items:center; position:relative; overflow:hidden; padding:110px 0 90px; }
+.money-hero::after { content:""; position:absolute; width:540px; height:540px; right:-180px; top:8%; border-radius:50%; background:rgba(239,35,60,.15); filter:blur(90px); }
+.money-hero-inner { position:relative; z-index:2; max-width:1060px; text-align:center; }
+.money-kicker { display:inline-block; margin-bottom:22px; color:#ff7685; font-weight:900; text-transform:uppercase; letter-spacing:.09em; font-size:.78rem; }
+.money-hero h1 { max-width:1000px; margin:0 auto 25px; font-size:clamp(3.4rem,9vw,8rem); line-height:.88; letter-spacing:-.07em; }
+.money-hero h1 span { color:var(--accent); }
+.money-hero p { max-width:760px; margin:0 auto 32px; color:#d3c6c8; font-size:clamp(1.05rem,2vw,1.35rem); line-height:1.55; }
+.money-cta { min-width:220px; justify-content:center; }
+.money-proofline { display:flex; justify-content:center; flex-wrap:wrap; gap:10px 22px; margin-top:25px; color:#96878a; font-weight:800; }
+.money-proofline strong { color:#fff; }
+.loss-strip { background:var(--accent); }
+.loss-strip-inner { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.loss-strip p { margin:0; color:#fff; font-size:1.05rem; }
+.loss-strip a { color:#fff; font-weight:900; white-space:nowrap; border-bottom:2px solid rgba(255,255,255,.55); }
+.money-system { background:#0d0a0b; }
+.money-section-head { max-width:850px; }
+.money-section-head h2, .money-result h2, .money-final h2 { font-size:clamp(2.5rem,5vw,5rem); line-height:.98; letter-spacing:-.05em; }
+.money-feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:48px; }
+.money-feature-grid article { min-height:190px; padding:28px; border:1px solid rgba(255,255,255,.09); border-radius:22px; background:#151112; }
+.money-feature-grid strong { display:block; color:#fff; font-size:1.45rem; margin-bottom:38px; }
+.money-feature-grid p { margin:0; color:#b9aaad; line-height:1.55; }
+.money-package-line { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.money-package-line span { padding:10px 14px; border-radius:999px; background:rgba(239,35,60,.1); border:1px solid rgba(239,35,60,.26); color:#ff8995; font-weight:800; font-size:.84rem; }
+.money-result { background:var(--accent); }
+.money-result .eyebrow { color:#fff; background:rgba(0,0,0,.12); border-color:rgba(255,255,255,.2); }
+.money-result-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+.money-equation { display:grid; gap:10px; }
+.money-equation div { display:flex; justify-content:space-between; gap:24px; padding:19px 22px; border-bottom:1px solid rgba(255,255,255,.3); }
+.money-equation span { opacity:.8; }
+.money-equation-total { background:#fff; color:#170b0d; border-radius:16px; border:0!important; margin-top:8px; }
+.money-truth { background:#090708; text-align:center; }
+.money-truth-inner { max-width:920px; }
+.money-big-line { color:#fff!important; font-size:clamp(2.8rem,6vw,6rem)!important; line-height:.95!important; letter-spacing:-.055em; font-weight:900; margin-bottom:24px!important; }
+.money-truth p { color:#b7a9ab; font-size:1.25rem; margin:8px 0; }
+.money-truth .button { margin-top:30px; }
+.money-final { background:radial-gradient(circle at 15% 50%,rgba(239,35,60,.2),transparent 30%),#0d0a0b; }
+.money-final-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:50px; }
+.money-final p { color:#b8aaac; font-size:1.1rem; }
+@media(max-width:860px){
+  .money-feature-grid { grid-template-columns:1fr 1fr; }
+  .money-result-grid { grid-template-columns:1fr; }
+  .money-final-inner { display:grid; }
+}
+@media(max-width:620px){
+  .money-nav a:not(.nav-cta) { display:none; }
+  .money-hero { min-height:auto; padding:90px 0 75px; }
+  .money-hero h1 { font-size:clamp(3.2rem,17vw,5.4rem); }
+  .loss-strip-inner { align-items:flex-start; flex-direction:column; padding-top:20px; padding-bottom:20px; gap:10px; }
+  .money-feature-grid { grid-template-columns:1fr; }
+  .money-feature-grid article { min-height:auto; }
+  .money-feature-grid strong { margin-bottom:20px; }
+  .money-equation div { align-items:flex-start; flex-direction:column; gap:5px; }
+}
